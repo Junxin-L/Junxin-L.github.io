@@ -1,3 +1,178 @@
----
-layout: default
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Junxin Liu</title>
+    <meta
+      name="description"
+      content="Junxin Liu is a cryptography PhD student at Oregon State University, advised by Mike Rosulek."
+    />
+    <link rel="preload" href="assets/junxin-dog.JPG" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Primary navigation">
+      <a class="logo" href="index.html" aria-label="Junxin Liu home">JUNXIN</a>
+    </header>
+
+    <main>
+      <section class="entry-hero" aria-labelledby="hero-title">
+        <h1 id="hero-title" class="sr-only">Junxin Liu</h1>
+        <a class="entry-tile entry-research" href="research.html" aria-label="Research">
+          <span class="entry-letter">R</span>
+          <span class="entry-label">Research</span>
+        </a>
+        <a class="entry-tile entry-github" href="https://github.com/junxin-L" aria-label="GitHub">
+          <span class="entry-letter">G</span>
+          <span class="entry-label">GitHub</span>
+        </a>
+        <a class="entry-tile entry-bio" href="#biography" aria-label="Biography">
+          <span class="entry-letter">B</span>
+          <span class="entry-label">Biography</span>
+        </a>
+      </section>
+
+      <section class="biography" id="biography" aria-labelledby="bio-title">
+        <div class="section-title">
+          <h2 id="bio-title">BIOGRAPHY</h2>
+        </div>
+
+        <div class="bio-photo-wrap" id="bio-photo-wrap">
+          <img
+            id="bio-photo"
+            src="assets/junxin-dog.JPG"
+            alt="Junxin Liu smiling with a laptop in a cafe"
+          />
+          <p class="photo-caption" id="photo-caption">Junxin, first on the right</p>
+        </div>
+
+        <div class="language-switcher" aria-label="Language choices">
+          <button class="language-card" type="button" data-language="en" aria-current="page">
+            <span>English</span>
+          </button>
+          <button class="language-card" type="button" data-language="zh">
+            <span>Chinese</span>
+          </button>
+        </div>
+
+        <article class="bio-copy" data-bio="en">
+          <p>
+            Hi, I am Junxin, a PhD student at Oregon State University,
+            advised by
+            <a href="https://garbledcircus.com/">Mike Rosulek</a>.
+          </p>
+          <p>
+            My research interests are cryptography, Secure Multi-party Computation such as Private Set Intersection. Before joining OSU, I completed my undergraduate study at Beijing Normal
+            University in 2024.
+          </p>
+          <p>
+            Contact me anytime:
+            <a href="mailto:junxin929@outlook.com">junxin929@outlook.com</a>
+          </p>
+        </article>
+
+        <article class="bio-copy" data-bio="zh" hidden>
+          <p>
+            你好呀，我是俄勒冈州立大学密码学博士生，导师为
+            <a href="https://garbledcircus.com/">Mike Rosulek</a>。
+          </p>
+          <p>
+            我的研究兴趣是密码学、隐私集合求交以及隐私保护计算。在加入俄勒冈州立大学之前，
+            我于 2024 年在北京师范大学完成本科阶段学习。
+          </p>
+          <p>
+            联系方式（欢迎联系我哦）：
+            <a href="mailto:junxin929@outlook.com">junxin929@outlook.com</a>
+          </p>
+        </article>
+      </section>
+
+      <section class="social-footer" aria-label="Contact links">
+        <div class="social-links">
+          <a href="life.html" aria-label="Personal life page">
+            <span class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 5.4c-2.7-3.1-7.6-.8-7.6 3.4 0 4.3 4.8 7.7 7.6 10 2.8-2.3 7.6-5.7 7.6-10 0-4.2-4.9-6.5-7.6-3.4Z" />
+              </svg>
+            </span>
+            <small>Life</small>
+          </a>
+          <a href="https://x.com/JunxinNB" aria-label="X @JunxinNB">
+            <span class="social-icon social-x" aria-hidden="true">X</span>
+            <small>@JunxinNB</small>
+          </a>
+          <a href="https://www.instagram.com/junxin929/" aria-label="Instagram @junxin929">
+            <span class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="5" y="5" width="14" height="14" rx="4" />
+                <circle cx="12" cy="12" r="3.4" />
+                <circle cx="16.4" cy="7.8" r="1" />
+              </svg>
+            </span>
+            <small>@junxin929</small>
+          </a>
+          <a href="mailto:junxin929@outlook.com" aria-label="Email Junxin Liu">
+            <span class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="6" width="16" height="12" rx="2" />
+                <path d="m5 8 7 5 7-5" />
+              </svg>
+            </span>
+            <small>Email</small>
+          </a>
+        </div>
+      </section>
+    </main>
+    <script>
+      const languageButtons = document.querySelectorAll("[data-language]");
+      const bioCopies = document.querySelectorAll("[data-bio]");
+      const bioPhoto = document.querySelector("#bio-photo");
+      const bioPhotoWrap = document.querySelector("#bio-photo-wrap");
+      const fallbackPhoto = "assets/junxin-dog.JPG";
+      const photoByLanguage = {
+        en: {
+          src: fallbackPhoto,
+          alt: "Junxin Liu smiling with a laptop in a cafe",
+          className: "",
+          caption: "Junxin, first on the right",
+        },
+        zh: {
+          src: "assets/chinese-forest.jpg",
+          alt: "刘君鑫在森林步道前",
+          className: "is-forest",
+          caption: "",
+        },
+      };
+
+      languageButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const language = button.dataset.language;
+          const photo = photoByLanguage[language];
+
+          document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+          languageButtons.forEach((item) => {
+            if (item === button) {
+              item.setAttribute("aria-current", "page");
+            } else {
+              item.removeAttribute("aria-current");
+            }
+          });
+          bioCopies.forEach((copy) => {
+            copy.hidden = copy.dataset.bio !== language;
+          });
+          bioPhotoWrap.className = `bio-photo-wrap ${photo.className}`.trim();
+          bioPhoto.src = photo.src;
+          bioPhoto.alt = photo.alt;
+          document.querySelector("#photo-caption").textContent = photo.caption;
+        });
+      });
+
+      bioPhoto.addEventListener("error", () => {
+        if (bioPhoto.src.endsWith("/chinese-forest.jpg")) {
+          bioPhoto.src = fallbackPhoto;
+        }
+      });
+    </script>
+  </body>
+</html>
