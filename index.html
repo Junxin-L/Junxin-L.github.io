@@ -13,21 +13,32 @@
   </head>
   <body>
     <header class="topbar" aria-label="Primary navigation">
-      <a class="logo" href="index.html" aria-label="Junxin Liu home">JUNXIN</a>
+      <a class="logo" href="index.html" aria-label="Junxin Liu home">
+        <span>J</span><span>U</span><span>N</span><span>X</span><span>I</span><span>N</span>
+      </a>
     </header>
 
     <main>
       <section class="entry-hero" aria-labelledby="hero-title">
         <h1 id="hero-title" class="sr-only">Junxin Liu</h1>
         <a class="entry-tile entry-research" href="research.html" aria-label="Research">
+          <span class="entry-reveal" aria-hidden="true">
+            <img src="assets/monet-sunrise.jpg" alt="" />
+          </span>
           <span class="entry-letter">R</span>
           <span class="entry-label">Research</span>
         </a>
         <a class="entry-tile entry-github" href="https://github.com/junxin-L" aria-label="GitHub">
+          <span class="entry-reveal" aria-hidden="true">
+            <img src="assets/monet-bridge.jpg" alt="" />
+          </span>
           <span class="entry-letter">G</span>
           <span class="entry-label">GitHub</span>
         </a>
         <a class="entry-tile entry-bio" href="#biography" aria-label="Biography">
+          <span class="entry-reveal" aria-hidden="true">
+            <img src="assets/monet-blue-lilies.jpg" alt="" />
+          </span>
           <span class="entry-letter">B</span>
           <span class="entry-label">Biography</span>
         </a>
@@ -48,17 +59,17 @@
         </div>
 
         <div class="language-switcher" aria-label="Language choices">
-          <button class="language-card" type="button" data-language="en" aria-current="page">
+          <button class="language-card" type="button" data-language="en" data-hover-label="Junxin Liu" aria-current="page">
             <span>English</span>
           </button>
-          <button class="language-card" type="button" data-language="zh">
+          <button class="language-card" type="button" data-language="zh" data-hover-label="刘珺欣">
             <span>Chinese</span>
           </button>
         </div>
 
         <article class="bio-copy" data-bio="en">
           <p>
-            Hi, I am Junxin Liu, a PhD student at Oregon State University,
+            Hi, I am Junxin Liu, a second-year PhD student at Oregon State University,
             advised by
             <a href="https://garbledcircus.com/">Mike Rosulek</a>.
           </p>
@@ -91,7 +102,7 @@
 
       <section class="social-footer" aria-label="Contact links">
         <div class="social-links">
-          <a href="life.html" aria-label="Personal life page">
+          <a class="social-life" href="life.html" aria-label="Personal life page">
             <span class="social-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M12 5.4c-2.7-3.1-7.6-.8-7.6 3.4 0 4.3 4.8 7.7 7.6 10 2.8-2.3 7.6-5.7 7.6-10 0-4.2-4.9-6.5-7.6-3.4Z" />
@@ -99,11 +110,11 @@
             </span>
             <small>Life</small>
           </a>
-          <a href="https://x.com/JunxinNB" aria-label="X @JunxinNB">
+          <a class="social-x-link" href="https://x.com/JunxinNB" aria-label="X @JunxinNB">
             <span class="social-icon social-x" aria-hidden="true">X</span>
             <small>@JunxinNB</small>
           </a>
-          <a href="https://www.instagram.com/junxin929/" aria-label="Instagram @junxin929">
+          <a class="social-instagram" href="https://www.instagram.com/junxin929/" aria-label="Instagram @junxin929">
             <span class="social-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <rect x="5" y="5" width="14" height="14" rx="4" />
@@ -113,7 +124,7 @@
             </span>
             <small>@junxin929</small>
           </a>
-          <a href="mailto:junxin929@outlook.com" aria-label="Email Junxin Liu">
+          <a class="social-email" href="mailto:junxin929@outlook.com" aria-label="Email Junxin Liu">
             <span class="social-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <rect x="4" y="6" width="16" height="12" rx="2" />
@@ -124,8 +135,43 @@
           </a>
         </div>
       </section>
+
+      <footer class="site-credits">
+        <span>© 2026 Junxin Liu</span>
+        <span>Last updated: May 8, 2026</span>
+      </footer>
     </main>
     <script>
+      document.querySelectorAll(".logo").forEach((logo) => {
+        const letters = [...logo.querySelectorAll("span")];
+        logo.addEventListener("pointermove", (event) => {
+          const rect = logo.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+
+          letters.forEach((letter) => {
+            const letterRect = letter.getBoundingClientRect();
+            const center = letterRect.left - rect.left + letterRect.width / 2;
+            const distance = Math.abs(x - center);
+            const lift = Math.max(0, 1 - distance / 46) * -9;
+            letter.style.setProperty("--wave", `${lift}px`);
+          });
+        });
+        logo.addEventListener("pointerleave", () => {
+          letters.forEach((letter) => letter.style.setProperty("--wave", "0px"));
+        });
+      });
+
+      document.querySelectorAll(".entry-tile").forEach((tile) => {
+        tile.addEventListener("pointermove", (event) => {
+          const rect = tile.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 100;
+          const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+          tile.style.setProperty("--mx", `${x}%`);
+          tile.style.setProperty("--my", `${y}%`);
+        });
+      });
+
       const languageButtons = document.querySelectorAll("[data-language]");
       const bioCopies = document.querySelectorAll("[data-bio]");
       const bioPhoto = document.querySelector("#bio-photo");

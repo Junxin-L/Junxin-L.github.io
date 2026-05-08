@@ -12,7 +12,9 @@
   </head>
   <body>
     <header class="topbar" aria-label="Primary navigation">
-      <a class="logo" href="index.html" aria-label="Junxin Liu home">JUNXIN</a>
+      <a class="logo" href="index.html" aria-label="Junxin Liu home">
+        <span>J</span><span>U</span><span>N</span><span>X</span><span>I</span><span>N</span>
+      </a>
     </header>
 
     <main>
@@ -20,8 +22,7 @@
         <p>RESEARCH</p>
         <h1>Cryptography for private computation.</h1>
         <span>
-          I work on Secure Multi-Party Computation, with a current focus
-          on Private Set Intersection.
+          
         </span>
       </section>
 
@@ -58,6 +59,31 @@
           </div>
         </article>
       </section>
+
+      <footer class="site-credits">
+        <span>© 2026 Junxin Liu</span>
+        <span>Last updated: May 8, 2026</span>
+      </footer>
     </main>
+    <script>
+      document.querySelectorAll(".logo").forEach((logo) => {
+        const letters = [...logo.querySelectorAll("span")];
+        logo.addEventListener("pointermove", (event) => {
+          const rect = logo.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+
+          letters.forEach((letter) => {
+            const letterRect = letter.getBoundingClientRect();
+            const center = letterRect.left - rect.left + letterRect.width / 2;
+            const distance = Math.abs(x - center);
+            const lift = Math.max(0, 1 - distance / 46) * -9;
+            letter.style.setProperty("--wave", `${lift}px`);
+          });
+        });
+        logo.addEventListener("pointerleave", () => {
+          letters.forEach((letter) => letter.style.setProperty("--wave", "0px"));
+        });
+      });
+    </script>
   </body>
 </html>
