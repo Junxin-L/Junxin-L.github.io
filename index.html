@@ -49,13 +49,13 @@
           <h2 id="bio-title">BIOGRAPHY</h2>
         </div>
 
-        <div class="bio-photo-wrap" id="bio-photo-wrap">
+        <div class="bio-photo-wrap is-me" id="bio-photo-wrap">
           <img
             id="bio-photo"
-            src="assets/junxin-dog.JPG"
-            alt="Junxin Liu smiling with a laptop in a cafe"
+            src="assets/me.jpg"
+            alt="Junxin Liu seated outdoors at a picnic table"
           />
-          <p class="photo-caption" id="photo-caption">Junxin, first on the right</p>
+          <p class="photo-caption" id="photo-caption"></p>
         </div>
 
         <div class="language-switcher" aria-label="Language choices">
@@ -179,16 +179,16 @@
       const fallbackPhoto = "assets/junxin-dog.JPG";
       const photoByLanguage = {
         en: {
+          src: "assets/me.jpg",
+          alt: "Junxin Liu seated outdoors at a picnic table",
+          className: "is-me",
+          caption: "",
+        },
+        zh: {
           src: fallbackPhoto,
           alt: "Junxin Liu smiling with a laptop in a cafe",
           className: "",
           caption: "Junxin, first on the right",
-        },
-        zh: {
-          src: "assets/chinese-forest.jpg",
-          alt: "刘君鑫在森林步道前",
-          className: "is-forest",
-          caption: "",
         },
       };
 
@@ -216,7 +216,7 @@
       });
 
       bioPhoto.addEventListener("error", () => {
-        if (bioPhoto.src.endsWith("/chinese-forest.jpg")) {
+        if (bioPhoto.src.endsWith("/me.jpg")) {
           bioPhoto.src = fallbackPhoto;
         }
       });

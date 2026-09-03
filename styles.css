@@ -278,6 +278,10 @@ a {
   width: min(42vw, 500px);
 }
 
+.bio-photo-wrap.is-me {
+  width: min(44vw, 560px);
+}
+
 .bio-photo-wrap.is-forest {
   width: min(38vw, 440px);
 }
@@ -293,6 +297,17 @@ a {
 .bio-photo-wrap.is-heart img {
   aspect-ratio: 4 / 5;
   object-position: 50% 38%;
+}
+
+.bio-photo-wrap.is-me img {
+  aspect-ratio: 1 / 1;
+  object-position: 50% 34%;
+}
+
+.publications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .bio-photo-wrap.is-forest img {
@@ -1096,6 +1111,10 @@ a {
 
   .bio-photo-wrap.is-heart {
     width: min(70vw, 440px);
+  }
+
+  .bio-photo-wrap.is-me {
+    width: min(68vw, 440px);
   }
 
   .bio-photo-wrap.is-forest {
